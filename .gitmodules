@@ -229,3 +229,6 @@
 [submodule "amicorpus/IB4001"]
 	path = amicorpus/IB4001
 	url = ./amicorpus/IB4001
+[submodule "amicorpus/IB4002"]
+	path = amicorpus/IB4002
+	url = ./amicorpus/IB4002
