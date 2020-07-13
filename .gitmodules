@@ -271,3 +271,6 @@
 [submodule "amicorpus/IN1013"]
 	path = amicorpus/IN1013
 	url = ./amicorpus/IN1013
+[submodule "amicorpus/IN1014"]
+	path = amicorpus/IN1014
+	url = ./amicorpus/IN1014
