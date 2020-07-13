@@ -376,3 +376,6 @@
 [submodule "amicorpus/IS1008c"]
 	path = amicorpus/IS1008c
 	url = ./amicorpus/IS1008c
+[submodule "amicorpus/IS1008d"]
+	path = amicorpus/IS1008d
+	url = ./amicorpus/IS1008d
