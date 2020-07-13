@@ -196,3 +196,6 @@
 [submodule "amicorpus/ES2014b"]
 	path = amicorpus/ES2014b
 	url = ./amicorpus/ES2014b
+[submodule "amicorpus/ES2014c"]
+	path = amicorpus/ES2014c
+	url = ./amicorpus/ES2014c
