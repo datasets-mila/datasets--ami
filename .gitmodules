@@ -10,3 +10,6 @@
 [submodule "amicorpus/EN2001e"]
 	path = amicorpus/EN2001e
 	url = ./amicorpus/EN2001e
+[submodule "amicorpus/EN2002a"]
+	path = amicorpus/EN2002a
+	url = ./amicorpus/EN2002a
