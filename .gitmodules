@@ -487,3 +487,6 @@
 [submodule "amicorpus/TS3010d"]
 	path = amicorpus/TS3010d
 	url = ./amicorpus/TS3010d
+[submodule "amicorpus/TS3011a"]
+	path = amicorpus/TS3011a
+	url = ./amicorpus/TS3011a
