@@ -2,6 +2,8 @@
 
 # this script is meant to be used with 'datalad run'
 
+DATASET_PATH=${PWD}
+
 for i in "$@"
 do
 	case ${i} in
@@ -36,4 +38,25 @@ do
 	datalad create -d . ${subset}/
 done
 
-./"${DOWNLOAD_SCRIPT}"
+while IFS= read -r wget_cmd
+do
+	subset=$(echo "${wget_cmd}" | grep -oP "amicorpus/.*?/" | uniq)
+	if [ ! -z "${subset}" ]
+	then
+		cd ${subset}/
+	fi
+	echo $(python "${DATASET_PATH}/scripts/extract_url_and_relpath.py" --dataset_path=${subset}/ -- "${wget_cmd}") | git-annex addurl -c annex.largefiles=anything --raw --batch --with-files 1>> ${DATASET_PATH}/init_and_download_subsets.out 2>> ${DATASET_PATH}/init_and_download_subsets.err
+	if [ ! -z "${subset}" ]
+	then
+		cd ../..
+	fi
+done <<< $(grep "wget" "${DOWNLOAD_SCRIPT}")
+
+for file_url in "http://groups.inf.ed.ac.uk/ami/AMICorpusAnnotations/ami_public_manual_1.6.2.zip amicorpus/ami_public_manual_1.6.2.zip" \
+                "http://groups.inf.ed.ac.uk/ami/AMICorpusAnnotations/ami_public_auto_1.5.1.zip amicorpus/ami_public_auto_1.5.1.zip" \
+                "http://groups.inf.ed.ac.uk/ami/AMICorpusAnnotations/dome_annotations_M1.csv amicorpus/dome_annotations_M1.csv" \
+                "http://groups.inf.ed.ac.uk/ami/AMICorpusAnnotations/dome_dataset_M1.csv amicorpus/dome_dataset_M1.csv" \
+                "http://groups.inf.ed.ac.uk/ami/AMICorpusAnnotations/SocialRoleAnnotation.tar.gz amicorpus/SocialRoleAnnotation.tar.gz"
+do
+        echo ${file_url} | git-annex addurl -c annex.largefiles=anything --raw --batch --with-files
+done
